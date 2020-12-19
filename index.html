@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Closures</title>
+</head>
+<body>
+    <script>
+
+        function sum() {
+            let sum = 0;
+
+            return function(parameter) {
+                return sum += parameter;
+            }
+        };
+
+        const acc = sum();
+
+        acc(8);
+        acc(2);
+
+
+        function createCounter(start, step) {
+            let count = start;
+
+            return function(isReset) {
+                if (isReset) {
+                    count = start;
+                    return count;
+                } 
+                return count += step;
+            };
+        }
+
+        let counterA = createCounter(42, 5);
+
+        counterA();
+
+    </script>
+</body>
+</html>
